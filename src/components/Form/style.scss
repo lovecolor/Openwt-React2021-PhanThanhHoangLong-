@@ -1,0 +1,67 @@
+.add-form{
+    
+    border-radius: 0.5rem;
+    background-color: #9E86EC;
+    padding:1rem 1.5rem;
+    
+    .form-open{
+        .form{
+            
+            width: 100%;
+            .form-group{
+                margin-right: 1rem;
+                width: 40%;
+                display: inline-block;
+                .lable{
+                    font-weight: 700;
+                    display: block;
+    
+                }
+                &>input{
+                    padding-left: 0.5rem;
+                    width: 100%;
+                    border-radius: 0.2rem;
+                    border:none;
+                    &:focus{
+                        outline: none;
+                    }
+                }
+            }
+            
+        }
+        .action-bar{
+            width:100%;
+            display: flex;
+            justify-content: flex-end;
+         margin-top: 1rem;
+            .btn-cancel{
+                padding: 0.5rem 1rem;
+                color: #380054;
+                background-color: #9E86EC;
+                border:none;
+                font-weight: 500;
+                
+                border-radius: 0.5rem;
+                font-size: 0.8rem;
+            }
+            
+        }
+    }
+    .form-close{
+        width: 100%;
+     
+        display: flex;
+        justify-content: center;
+
+
+    }
+    
+}
+.btn-add{
+    border:none;
+    padding: 0.7rem 1rem;
+    color: white;
+    background-color: #380054;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+}

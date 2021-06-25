@@ -1,0 +1,54 @@
+.select-year{
+    position: relative;
+    .current-year{
+       
+        background-color: white;
+        border-radius: 0.3rem;
+        width: 7rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &__text{
+            padding-left: 2rem;
+
+            
+            
+        }
+    }
+    
+    .listOption{
+        max-height: 5rem;
+        overflow: scroll;
+        top:-0.5rem;
+        width: 7rem;
+        position: absolute;
+        z-index: 2;
+        background-color: #D8D4D8;
+        border-radius: 0.3rem;
+        padding:3px;
+        &::-webkit-scrollbar { 
+            display: none; 
+        }
+        .option-item{
+            position: relative;
+            padding-left: 1rem;
+            font-weight: 500;
+            font-size: 0.8rem;
+            &>i{
+                position: absolute;
+                left:5px;
+                // background-color: white;
+                height: 100%;
+                display: flex ;
+                align-items: center;
+                font-size: 0.5rem;
+                color:black
+            }
+            &:hover{
+                background-color: #3088FB;
+            }
+        }
+    }
+    
+}
