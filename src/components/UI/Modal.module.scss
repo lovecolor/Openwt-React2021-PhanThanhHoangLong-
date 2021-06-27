@@ -1,0 +1,41 @@
+.modal {
+    .btn_add{
+        background-color: #4c0b56;
+        padding: 1rem;
+    }
+    .container {
+        position: relative;
+        z-index: 2;
+        border-radius: 1rem;
+        border:1px solid black;
+        background-color: black;
+        margin: auto;
+        max-width: 40rem;
+        .head {
+           
+            border-radius: .5rem .5rem 0 0rem;
+            background-color: #4c0b56;
+            color: white;
+            font-weight: 700;
+            padding: 0.8rem ;
+        }
+        .body {
+            position: relative;
+            font-weight: 400;
+            height: 5rem;
+            padding: 1rem 0.5rem;
+            background-color: white;
+            border-radius: 0 0 .5rem .5rem;
+            button {
+                position: absolute;
+                color: white;
+                background-color: #4c0b56;
+                padding: .3rem 0.8rem;
+                border: none;
+                right: 1rem;
+                bottom: 1rem;
+            }
+        }
+        
+    }
+}
