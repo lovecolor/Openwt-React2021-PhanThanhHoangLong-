@@ -1,0 +1,20 @@
+.meal-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid whitesmoke;
+    padding: 1rem 0;
+    width: 100%;
+    .content{
+        .name{
+            font-weight: bold;
+        }
+        .description{
+            font-style: italic;
+        }
+        .price{
+            font-weight: bold;
+            color: #ad5502;
+        }
+    }
+}

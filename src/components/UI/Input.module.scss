@@ -1,0 +1,18 @@
+.input {
+    & > label {
+        font-weight: bold;
+        margin-right: 1rem;
+    }
+    & > input {
+      
+        width: 2rem;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+
+        padding-left: 0.5rem;
+        &:focus{
+            border-color: lightblue;
+            outline: none;
+        }
+    }
+}

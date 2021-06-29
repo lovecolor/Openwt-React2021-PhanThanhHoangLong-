@@ -1,0 +1,35 @@
+.total{
+    margin-top: 1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.actions{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 1rem;
+    &>button{
+        cursor: pointer;
+        border: none;
+        padding: .4rem 1.5rem;
+        border-radius: 50rem;
+        border: 1px solid #8a2b06;
+        margin-left: 1rem;
+        background-color: transparent;
+        &:hover,:active{
+            background-color: #5a1a01;
+            border-color: #5a1a01;
+            color: white;
+          }
+    }
+    .btn-close{
+        color: #8a2b06;
+    }
+    .btn-order{
+        background-color: #8a2b06;
+  color: white;
+  
+    }
+}
