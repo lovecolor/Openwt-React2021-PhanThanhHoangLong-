@@ -25,6 +25,7 @@ const cartSlice = createSlice({
             const items = state.items as any
             const idMeal = items.findIndex((e: any) => e.id === id)
             items[idMeal].qty += diff
+            state.total+=(diff*items[idMeal].price)
             if(items[idMeal].qty==0)
             {
                 state.items=items.filter((e:any)=>e.id!=id)
