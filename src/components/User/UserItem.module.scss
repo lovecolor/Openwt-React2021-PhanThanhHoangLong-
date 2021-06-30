@@ -4,4 +4,10 @@
     padding:0.5rem;
     font-weight: 600;
     margin-bottom: 1rem;
+    &:last-child{
+        margin: 0 0;
+    }
+    &:hover{
+        background-color: #4c0b56;
+    }
 }

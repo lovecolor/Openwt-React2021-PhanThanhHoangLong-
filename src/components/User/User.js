@@ -7,8 +7,8 @@ export default function User(props) {
     return (
         <div className={style.user}>
             {
-                props.listUser.length>0&&<Card>
-                {props.listUser.map((e,i)=><UserItem user={e} key={i}></UserItem>)}
+                props.listUser.length>0&&<Card >
+                {props.listUser.map((e,i)=><UserItem onClick={props.onRemove.bind(null,i)} user={e} key={i}></UserItem>)}
             </Card>
             }
             

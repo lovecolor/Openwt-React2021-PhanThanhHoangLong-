@@ -9,11 +9,15 @@ function App() {
   const addUserHandle=(user)=>{
     setListUser(prevState=>[user,...prevState])
   }
+  const removeUserHandler=(id)=>{
+    
+    setListUser((prevState)=>prevState.filter((e,i)=>i!=id))
+  }
   return (
     <div className={style.App}>
       <div className={style.content}>
-        <NewUser onSubmit={addUserHandle}></NewUser>
-        <User listUser={listUser}></User>
+        <NewUser onSubmit={addUserHandle} ></NewUser>
+        <User onRemove={removeUserHandler} listUser={listUser}></User>
       </div>
       {/* <Modal isOpen={true} body="asddsa"></Modal> */}
     </div>

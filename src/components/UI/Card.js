@@ -3,7 +3,7 @@ import style from './Card.module.scss'
 
 export default function Card(props) {
     return (
-        <div className={style.card}>
+        <div className={`${style.card} ${props.className}`}>
             {props.children}
         </div>
     )
