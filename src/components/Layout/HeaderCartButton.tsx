@@ -9,6 +9,7 @@ export default function HeaderCartButton(props:any) {
         return state.cart.items
     })
     useEffect(()=>{
+        if(cartItems.length===0) return
         setIsBump(true)
 const timeOut=setTimeout(
     ()=>{

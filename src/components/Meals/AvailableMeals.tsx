@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import classes from './AvailableMeals.module.scss'
 import MealItem from './MealItem/MealItem'
 import Card from '../UI/Card'
+import { RootStateOrAny, useDispatch, useSelector } from 'react-redux'
+import { getAll } from '../../reducers/mealSlice'
 
 const DUMMY_MEALS=[
     {
@@ -35,11 +37,30 @@ const DUMMY_MEALS=[
 
 
 export default function AvailableMeals() {
-    const mealsList=DUMMY_MEALS.map((meal,i)=>(
+  const [isLoading,setIsLoading]=useState(false)
+  
+  const dispatch=useDispatch()
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true)
+      await dispatch(getAll())
+      setIsLoading(false)
+
+    }
+    
+    fetchData()
+    
+
+  }, [])
+  const listMeal=useSelector((state:RootStateOrAny)=>state.meals)
+    const mealsList=listMeal.map((meal:any,i:number)=>(
+      
         <MealItem meal={meal} key={i} ></MealItem>
     ))
+    if(isLoading) return <p className={classes.loading} >Loading...</p>
     return (
         <div  className={classes["meal-list"]}>
+
             <Card>
             {
                 mealsList

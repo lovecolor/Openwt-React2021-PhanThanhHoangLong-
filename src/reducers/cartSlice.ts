@@ -1,11 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import mealApi from "../api/mealApi";
+
+const initialState= {
+    items: [],
+    total: 0
+}
 
 const cartSlice = createSlice({
     name: "cart",
-    initialState: {
-        items: [],
-        total: 0
-    },
+    initialState: initialState,
     reducers: {
         addItem: (state, action) => {
             state.total += (action.payload.price * action.payload.qty)
@@ -34,13 +37,17 @@ const cartSlice = createSlice({
             state.items = items
 
         },
+        clear: (state, action) => {
+            return initialState
+        },
 
 
     },
+    
 });
 
 const { reducer: cartReducer, actions } = cartSlice;
 export const {
-    addItem, editQty
+    addItem, editQty,clear
 } = actions;
 export default cartReducer;

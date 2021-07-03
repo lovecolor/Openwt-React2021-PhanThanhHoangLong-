@@ -5,12 +5,14 @@ import { combineReducers, createStore } from "redux";
 
 
 import cartReducer from "./reducers/cartSlice";
+import mealReducer from "./reducers/mealSlice";
 
 
 
 const rootReducer = combineReducers({
    
     cart: cartReducer,
+    meals:mealReducer
    
 });
 
