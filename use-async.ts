@@ -35,7 +35,8 @@ function asyncReducer(state: {
 
 
 
-const useAsync = (asyncFunction: () => any) => {
+const useAsync = (asyncFunction: (...data: any[]) => any, start = false) => {
+
   const [asyncState, dispatch] = useReducer(asyncReducer, {
 
     result: null,
@@ -43,16 +44,15 @@ const useAsync = (asyncFunction: () => any) => {
     loading: false,
   })
   const sendRequest = useCallback(
-    async function () {
+    async (...data: any[]) => {
+
       dispatch({ type: 'SEND' });
       try {
 
-        const responseData = await asyncFunction();
-
-
-
+        const responseData = await asyncFunction(...data);
 
         dispatch({ type: 'SUCCESS', responseData });
+
       } catch (error) {
 
 
@@ -61,13 +61,15 @@ const useAsync = (asyncFunction: () => any) => {
 
           errorMessage: [...(error.message || 'Something went wrong!')],
         });
+
       }
     },
     [asyncFunction]
   );
+
   useEffect(() => {
-    sendRequest()
-  }, [sendRequest])
+    start && sendRequest()
+  }, [])
   return {
     sendRequest,
     ...asyncState,
