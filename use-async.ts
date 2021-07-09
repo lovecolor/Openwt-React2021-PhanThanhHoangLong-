@@ -1,4 +1,4 @@
-import { useCallback, useReducer } from "react";
+import { useCallback, useEffect, useReducer } from "react";
 
 function asyncReducer(state:{
     loading:boolean,
@@ -65,6 +65,9 @@ const useAsync=(asyncFunction:()=>any)=>{
         },
         [asyncFunction]
       );
+      useEffect(()=>{
+        sendRequest()
+      },[sendRequest])
       return {
         sendRequest,
         ...asyncState,
