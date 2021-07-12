@@ -5,14 +5,14 @@ import { useCallback, useEffect, useReducer, useState } from "react";
 
 
 const useAsync = (asyncFunction: (...data: any[]) => any, startWithPending = false) => {
-  const [loadding, setLoadding] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false)
   const [errors, setErrors] = useState<string[] | null>(null)
   const [result, setResult] = useState<any>(null)
 
-  const sendRequest = useCallback(
+  const run = useCallback(
     async (...data: any[]) => {
 
-      setLoadding(true)
+      setLoading(true)
       try {
 
         const responseData = await asyncFunction(...data);
@@ -25,11 +25,11 @@ const useAsync = (asyncFunction: (...data: any[]) => any, startWithPending = fal
   );
 
   useEffect(() => {
-    startWithPending && sendRequest()
+    startWithPending && run()
   }, [])
   return {
-    sendRequest,
-    loadding,
+    run,
+    loading,
     errors,
     result
   };
