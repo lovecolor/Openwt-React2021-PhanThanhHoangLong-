@@ -1,78 +1,37 @@
-import { useCallback, useEffect, useReducer } from "react";
-
-function asyncReducer(state: {
-  loading: boolean,
-  result: any,
-  errors: string[] | null
-}, action: any) {
-  if (action.type === 'SEND') {
-    return {
-      result: null,
-      errors: null,
-      loading: true,
-    };
-  }
-
-  if (action.type === 'SUCCESS') {
-
-    return {
-      result: action.responseData,
-      errors: null,
-      loading: false,
-    };
-  }
-
-  if (action.type === 'ERROR') {
-    return {
-      result: null,
-      errors: action.errorMessage,
-      loading: false,
-    };
-  }
-
-  return state;
-}
+import { useCallback, useEffect, useReducer, useState } from "react";
 
 
 
-const useAsync = (asyncFunction: (...data: any[]) => any, start = false) => {
 
-  const [asyncState, dispatch] = useReducer(asyncReducer, {
 
-    result: null,
-    errors: null,
-    loading: false,
-  })
+const useAsync = (asyncFunction: (...data: any[]) => any, startWithPending = false) => {
+  const [loadding, setLoadding] = useState<boolean>(false)
+  const [errors, setErrors] = useState<string[] | null>(null)
+  const [result, setResult] = useState<any>(null)
+
   const sendRequest = useCallback(
     async (...data: any[]) => {
 
-      dispatch({ type: 'SEND' });
+      setLoadding(true)
       try {
 
         const responseData = await asyncFunction(...data);
-
-        dispatch({ type: 'SUCCESS', responseData });
-
+        setResult(responseData)
       } catch (error) {
-
-
-        dispatch({
-          type: 'ERROR',
-
-          errorMessage: [...(error.message || 'Something went wrong!')],
-        });
-
+        setErrors([...(error.message || 'Something went wrong!')])
       }
     },
     [asyncFunction]
   );
 
   useEffect(() => {
-    start && sendRequest()
+    startWithPending && sendRequest()
   }, [])
   return {
     sendRequest,
-    ...asyncState,
+    loadding,
+    errors,
+    result
   };
 }
 export default useAsync
